@@ -1,49 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="UTF-8">
 	<title>Calculator</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
-
+	<link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
-		<section class="logo">
-			<h1>Calculator</h1>
-		</section>
-		<section class="calc">
-			<div class="row1">
-				<div class="answer">12345678</div>
-			</div>
-
-			<div class="row2">
-				<button class="seven">7</button>
-				<button class="eight">8</button>
-				<button class="nine">9</button>
-				<button class="multiply">X</button>
-			</div>
-			<div class="row3">
-				<button class="seven">4</button>
-				<button class="eight">5</button>
-				<button class="nine">6</button>
-				<button class="minus">-</button>
-			</div>
-			<div class="row4">
-				<button class="seven">1</button>
-				<button class="eight">2</button>
-				<button class="nine">3</button>
-				<button class="minus">+</button>
-			</div>
-			<div class="row5">
-				<button class="zero">0</button>
-				<button class="clear-all">AC</button>
-				<button class="clear">C</button>
-				<button class="equal">=</button>
-			</div>
+	<div class="wrapper">
+		<section class="screen">
+			0
 		</section>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="js/main.js"></script>
+		<section class="calc-buttons">
+			<div class="rows">
+				<button class="col-btn bigger">AC</button>
+				<button class="col-btn">&larr;</button>
+				<button class="col-btn">&divide;</button>
+			</div>
+			<div class="rows">
+				<button class="col-btn">7</button>
+				<button class="col-btn">8</button>
+				<button class="col-btn">9</button>
+				<button class="col-btn">&times;</button>
+			</div>
+			<div class="rows">
+				<button class="col-btn">4</button>
+				<button class="col-btn">5</button>
+				<button class="col-btn">6</button>
+				<button class="col-btn"> - </button>
+			</div>
+			<div class="rows">
+				<button class="col-btn">1</button>
+				<button class="col-btn">2</button>
+				<button class="col-btn">3</button>
+				<button class="col-btn">+</button>
+			</div>
+			<div class="rows">
+				<button class="col-btn tripple">0</button>
+				<button class="col-btn">&equals;</button>
+			</div>
+		</section>
+	</div>
+	<script src="js/main.js"></script>
 </body>
+
 </html>
