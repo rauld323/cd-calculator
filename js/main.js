@@ -1,23 +1,21 @@
+//calcTotal Keeps track of previous numbers
 let calcTotal = 0;
 let userInput = "0";
-let previousOperator;
+//Keeps track of previous operators
+let workingOperator ;
 let screen = document.querySelector(".screen");
-// const numMax = 8;
 
 
-function checScreen(){
-	if(userInput.length < 8){
-		screen.innerText = userInput.split("").slice(0,3)
+function rerender() {
+	if(userInput.length > 8){
+		userInput.slice(0,8)
+	}else {
+		screen.innerText = userInput;
 	}
 }
 
-checScreen()
-
-function rerender() {
-	screen.innerText  = userInput;
-}
-
 // 1. Whenever anything is clicked on, the init() function will run.
+
 function init() {
 	document.querySelector(".calc-buttons").addEventListener("click", function (event) {
 		buttonClick(event.target.innerText);
@@ -28,8 +26,10 @@ init();
 
 
 //Step 2 buttonClick() checks if its not a number. This is where the click event is checked and sent to its corresponding function
+
+//value represents what is on the button that is clicked
 function buttonClick(value) {
-	if (isNaN(parseInt(value))) {
+	if (isNaN(parseInt(value)) ) {
 		handleSymbol(value);
 	} else {
 		handleNumber(value);
@@ -44,14 +44,10 @@ function handleNumber(value) {
 		userInput += value;
 	}
 
-
-	if (value < 2){
-		userInput = "error"
-	}
 }
 
 
-//Step 4 If it is a symbol and AC we clear everything. If it is an "=" we have total everything. It it is "arrow" we deletethe last input. If none of this applies, use the operators
+//Step 4 If it is a symbol and AC we clear everything. If it is an "=" we have total everything. It it is "arrow" we delete the last input. If none of this applies, use the operators
 function handleSymbol(value) {
 	switch (value) {
 		case "AC":
@@ -60,13 +56,17 @@ function handleSymbol(value) {
 			break;
 
 		case "=":
-			if (previousOperator === null) {
+			if (workingOperator  === null) {
 				return;
 			}
 			flushOperation(parseInt(userInput));
-			previousOperator = null;
-			userInput = +calcTotal;
-			calcTotal = 0;
+			if (userInput >= 9) {
+				userInput = "Error"
+			}else{
+				workingOperator  = null;
+				userInput = +calcTotal;
+				calcTotal = 0;
+			}
 			break;
 
 		case "←":
@@ -101,7 +101,9 @@ function handleMath(value) {
 	} else {
 		flushOperation(intuserInput);
 	}
-	previousOperator = value;
+
+
+	workingOperator  = value;
 
 	userInput = "0";
 
@@ -110,11 +112,11 @@ function handleMath(value) {
 	Step 6 Depending on the button/symbol they clicked, it will do the corresponding math.
 */
 function flushOperation(intuserInput) {
-	if (previousOperator === "+") {
+	if (workingOperator  === "+" && calcTotal >= 8) {
 		calcTotal += intuserInput;
-	} else if (previousOperator === "-") {
+	} else if (workingOperator  === "-") {
 		calcTotal -= intuserInput;
-	} else if (previousOperator === "×") {
+	} else if (workingOperator  === "×") {
 		calcTotal *= intuserInput;
 	} else {
 		calcTotal /= intuserInput;
