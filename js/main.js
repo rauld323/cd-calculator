@@ -103,8 +103,7 @@ function handleMath(value) {
 	}
 
 
-	workingOperator  = value;
-
+	workingOperator  = value
 	userInput = "0";
 
 }
